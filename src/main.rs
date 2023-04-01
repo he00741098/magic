@@ -1,9 +1,19 @@
+ #![cfg_attr(
+    all(not(debug_assertions), target_os = "windows"),
+    windows_subsystem = "windows"
+ )]
 use reqwest::header::AUTHORIZATION;
 use std::env;
 use std::collections::HashMap;
 use serde_json::Value;
+
 #[tokio::main]
 async fn main() {
+		tauri::Builder::default()
+   	.run(tauri::generate_context!())
+   	.expect("error while running tauri application");
+
+	
 		let post_endpoint = "https://api.assemblyai.com/v2/transcript";
 		
 		let mut params = HashMap::new();
@@ -61,5 +71,15 @@ async fn main() {
 	
 	}
 
+	//make magic happen
+	//record audio -> sfml sound recorder buffer thing -> sound buffer
+	//store audio as .wav
+	//send audio
+	fn record_audio(){}
+
+	//tauri front end -> make app happen
+	//buttons and stuff
+	//amazingness
+	fn startup(){}
 }
 
